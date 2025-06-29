@@ -1,0 +1,51 @@
+{    "background": {
+        "scripts": [
+            "scr/jquery.js",
+			"index.js"		
+        ]
+    },
+    "manifest_version": 2,
+    "name": "STEtrade_free_v1.4",
+    "description": "Бот  для работы на торговой площадке Steam",
+    "version": "1.4",
+    "icons": {      
+	  "512": "ico/PRO.png"
+    },		
+    "content_scripts": [{
+            "all_frames": true,
+            "js": [
+                "scr/script_market.js",
+                "scr/jquery.js"
+            ],
+            "matches": ["https://steamcommunity.com/market/"],
+            "run_at": "document_end"
+        },
+        {
+            "all_frames": true,
+            "js": [
+			"scr/jquery.js",                                
+			"scr/script_listings.js"
+            ],
+			"css":["scr/site.css"],
+            "matches": ["https://steamcommunity.com/market/listings/*"],
+            "run_at": "document_end"
+        }
+    ],
+    "browser_action": {
+        "default_page": "index.html"
+    },
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "permissions": [
+        "http://steamcommunity.com/*",
+        "http://*.steamcommunity.com/*",
+        "https://steamcommunity.com/*",
+        "https://*.steamcommunity.com/*",
+		"http://*.stetrade.ru/*",		
+		"http://*.localhost/*",		
+        "notifications",
+        "cookies",
+        "tabs",
+        "browsingData",
+        "storage"
+    ]
+}
